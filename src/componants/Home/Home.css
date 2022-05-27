@@ -1,0 +1,8 @@
+.country-big{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+.font-see{
+    font-family: cursive;
+    font-weight: bolder;
+}

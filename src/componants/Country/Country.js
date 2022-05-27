@@ -1,10 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Country.css';
 
-const Country = () => {
+const Country = ({country}) => {
+    console.log(country);
+    const { flags ,ccn3 } =country;
     return (
         <div>
-            <h4>Country</h4>
+            
+           <div className='img-div'>
+           <Link to='/'>
+            <img className='img-style' src={flags.png} alt="" />
+            </Link>
+           </div>
+           
+
         </div>
     );
 };

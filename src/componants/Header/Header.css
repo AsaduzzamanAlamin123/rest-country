@@ -9,13 +9,7 @@
 .link-style a:hover{
     color: brown;
 }
-/* .list li{
-    display: inline;
 
-} */
-/* .list{
-    display: inline; */
-/* } */
 .link-style{
     display: flex;
 }
