@@ -1,0 +1,21 @@
+.link-style a{
+    margin-left: 30px;
+    text-decoration: none;
+    font-family: cursive;
+    color: lightcyan;
+    /* display: flex;
+    flex-direction: column; */
+}
+.link-style a:hover{
+    color: brown;
+}
+/* .list li{
+    display: inline;
+
+} */
+/* .list{
+    display: inline; */
+/* } */
+.link-style{
+    display: flex;
+}
