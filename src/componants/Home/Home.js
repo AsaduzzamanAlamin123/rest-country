@@ -22,10 +22,13 @@ const Home = () => {
             <div className='country-big'>
                 {
                     countries.map(country => <Country country={country}></Country>)
+                   
                 }
 
-                <Link className='text-succes text-decoration-none font-see' to='/countries'>See More...</Link>
+                
             </div>
+            <Link className='text-succes text-decoration-none font-see' to='/countries'>See More...</Link>
+            
             
         </div>
     );

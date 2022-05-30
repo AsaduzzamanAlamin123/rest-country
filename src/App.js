@@ -7,6 +7,8 @@ import Home from './componants/Home/Home'
 import Countries from './componants/Countries/Countries';
 import About from './componants/About/About';
 import Blog from './componants/Blog/Blog';
+import NotFound from './componants/NotFound/NotFound';
+import CountryDetailes from './componants/CountryDetailes/CountryDetailes';
 
 function App() {
   return (
@@ -17,6 +19,10 @@ function App() {
         <Route path='/countries' element={<Countries></Countries>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path= '/country/:cnndet' element={<CountryDetailes></CountryDetailes>}></Route>
+        
+        <Route path='*' element={<NotFound></NotFound>}></Route>
+
       </Routes>
     </div>
   );
