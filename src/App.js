@@ -10,6 +10,8 @@ import Blog from './componants/Blog/Blog';
 import NotFound from './componants/NotFound/NotFound';
 import CountryDetailes from './componants/CountryDetailes/CountryDetailes';
 import Footer from './componants/Footer/Footer';
+import Login from './componants/Login/Login';
+import Register from './componants/Register/Register';
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path= '/country/:cnndet' element={<CountryDetailes></CountryDetailes>}></Route>
-        
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
+        
 
       </Routes>
       <Footer></Footer>

@@ -19,6 +19,7 @@ const Header = () => {
       <CustomLink className='list' to='/countries'>Countries</CustomLink>
       <CustomLink className='list' to='/blog'>Blog</CustomLink>
       <CustomLink className='list'  to='/about'>About Us</CustomLink>
+      <CustomLink className='list'  to='/login'>Log In</CustomLink>
       
       
       </div>
