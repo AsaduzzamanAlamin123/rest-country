@@ -8,7 +8,7 @@ import './Header.css';
 const Header = () => {
     return (
         <div>
-            <Navbar  sticky="top" bg="dark" variant="dark">
+            <Navbar fixed="top" bg="dark" variant="dark">
     <Container>
     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
     <Nav className="ms-auto">

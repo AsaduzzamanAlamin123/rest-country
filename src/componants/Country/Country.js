@@ -4,13 +4,13 @@ import './Country.css';
 
 const Country = ({country}) => {
     // console.log(country);
-    const { flags ,ccn3 } =country;
+    const { flags ,ccn3 ,name } =country;
     return (
-        <div>
+        <div className='mt-3'>
             
            <div className='img-div'>
            <Link to={`/country/${ccn3}`}>
-            <img className='img-style' src={flags.png} alt="" />
+            <img title={name.common} className='img-style' src={flags.png} alt="" />
             </Link>
            </div>
            

@@ -1,0 +1,18 @@
+
+
+.title{
+    color: blueviolet;
+    font-family: cursive;
+    font-weight: bolder;
+}
+.text{
+    color: burlywood;
+    font-family: cursive;
+    font-weight: bolder;
+}
+.full-cadr{
+    background-color: whitesmoke;
+    box-shadow: 50px 50px 70px black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

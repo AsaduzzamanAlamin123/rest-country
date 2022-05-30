@@ -10,7 +10,7 @@ const Countries = () => {
         .then(data=>setCountries(data))
     },[])
     return (
-        <div>
+        <div className='mt-3'>
             <h4>Countries:{countries.length}</h4>
             <div className='country-big'>
                 {

@@ -9,6 +9,7 @@ import About from './componants/About/About';
 import Blog from './componants/Blog/Blog';
 import NotFound from './componants/NotFound/NotFound';
 import CountryDetailes from './componants/CountryDetailes/CountryDetailes';
+import Footer from './componants/Footer/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='*' element={<NotFound></NotFound>}></Route>
 
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
