@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Country from '../Country/Country'
+import Slider from '../Slider/Slider';
 import './Home.css'
 
 const Home = () => {
@@ -14,9 +15,9 @@ const Home = () => {
         countries.length = 20;
     }
     return (
-        <div>
+        <div className='home-str'>
             <div>
-
+            <Slider></Slider>
             </div>
             <h2>My Country{countries.length}</h2>
             <div className='country-big'>
