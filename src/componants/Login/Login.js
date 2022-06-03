@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Login.css'
 import { Button, Form } from 'react-bootstrap';
 import image from '../../image/upl/2341.png_300-removebg-preview.png'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  // const [email , setEmail] = useState('');
-  // const [password , setPassword] = useState('');
+  const [user] = useAuthState(auth)
 
   const [userInfo , setUserInfo] = useState({
     email:'',
@@ -23,7 +22,9 @@ const Login = () => {
     general:''
   })
   // const [error , setError] =useState('');
-  const [ signInWithEmailAndPassword, user, loading, hookError ] = useSignInWithEmailAndPassword(auth);
+  const [ signInWithEmailAndPassword, e, loading, hookError ] = useSignInWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, ee, googleLoading, googleError] = useSignInWithGoogle(auth);
 
   const handleEmailChange = (event) =>{
     const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/ ;
@@ -67,10 +68,11 @@ const Login = () => {
   }
 
   useEffect(()=>{
-    if(hookError){
-     toast(hookError?.message)
+    const error = hookError || googleError;
+    if(error){
+     toast(error?.message)
     }
-  },[hookError]);
+  },[hookError,googleError]);
 
 
   const navigate = useNavigate();
@@ -83,6 +85,8 @@ const Login = () => {
         navigate(from)
     }
   },[user])
+
+
   
     return (
         <div className='mt-5'>
@@ -119,6 +123,8 @@ const Login = () => {
   <ToastContainer></ToastContainer>
  
 </Form>
+
+<p><button onClick={() => signInWithGoogle()}>Sign in with Google</button></p>
 </div>
             </div>
         </div>
