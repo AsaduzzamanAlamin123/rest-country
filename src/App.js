@@ -12,6 +12,8 @@ import CountryDetailes from './componants/CountryDetailes/CountryDetailes';
 import Footer from './componants/Footer/Footer';
 import Login from './componants/Login/Login';
 import Register from './componants/Register/Register';
+import CountryDetailesShow from './componants/CountryDetailesShow/CountryDetailesShow';
+import RequireAuth from './componants/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -19,13 +21,28 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/countries' element={<Countries></Countries>}></Route>
+        <Route path='/countries' element={
+          <RequireAuth>
+            <Countries></Countries>
+          </RequireAuth>
+        }></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path= '/country/:cnndet' element={<CountryDetailes></CountryDetailes>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/countrydetailshow' element={
+          
+            <CountryDetailesShow></CountryDetailesShow>
+        
+        }>
+
+        </Route>
+
+
+
         <Route path='*' element={<NotFound></NotFound>}></Route>
+
         
 
       </Routes>

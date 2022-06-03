@@ -12,7 +12,7 @@ const Home = () => {
         .then(data=>setCountries(data))
     },[])
     if(countries.length){
-        countries.length = 20;
+        countries.length = 10;
     }
     return (
         <div className='home-str'>
