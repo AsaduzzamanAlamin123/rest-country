@@ -6,6 +6,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   // const [email , setEmail] = useState('');
@@ -96,6 +97,7 @@ const Login = () => {
     {errors?.passwordEroor && <p>{errors.passwordEroor}</p>}
 
   </Form.Group>
+ <p>You haven't account  <Link to='/register'>plz register</Link></p>
   
   <Button onClick={() => signInWithEmailAndPassword(userInfo.email, userInfo.password)} variant="primary" type="submit" >
     Login
