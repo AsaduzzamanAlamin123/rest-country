@@ -6,7 +6,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   // const [email , setEmail] = useState('');
@@ -70,7 +70,19 @@ const Login = () => {
     if(hookError){
      toast(hookError?.message)
     }
-  },[hookError])
+  },[hookError]);
+
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/countries';
+  
+
+  useEffect(()=>{
+    if(user){
+        navigate(from)
+    }
+  },[user])
   
     return (
         <div className='mt-5'>

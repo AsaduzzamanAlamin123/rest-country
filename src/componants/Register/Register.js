@@ -23,10 +23,11 @@ const Register = () => {
     passwordEroor:'',
     general:'',
     confirmPasswordError:''
+    // wev@ph.com
     
 })
   // const [error , setError] =useState('');
-  const [  createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth);
+  const [  createUserWithEmailAndPassword, user, loading, hookError] = useCreateUserWithEmailAndPassword(auth , { sendEmailVerification : true });
 
   const handleEmailChange = (event) =>{
     const emailRegex = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/ ;
