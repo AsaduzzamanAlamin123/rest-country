@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css'
 import { Button, Form } from 'react-bootstrap';
 import image from '../../image/upl/2341.png_300-removebg-preview.png'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
-// numorphism
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
-  const [email , setEmail] = useState('');
-  const [password , setPassword] = useState('');
-  const [error , setError] =useState('');
+  // const [email , setEmail] = useState('');
+  // const [password , setPassword] = useState('');
+
+  const [userInfo , setUserInfo] = useState({
+    email:'',
+    password:'',
+  });
+
+  const [errors , setErrors] = useState({
+    emailError:'',
+    passwordEroor:'',
+    general:''
+  })
+  // const [error , setError] =useState('');
   const [ signInWithEmailAndPassword, user, loading, hookError ] = useSignInWithEmailAndPassword(auth);
 
   const handleEmailChange = (event) =>{
@@ -17,10 +30,12 @@ const Login = () => {
     const validEmail = emailRegex.test(event.target.value);
     console.log(validEmail);
     if(validEmail){
-      setEmail(event.target.value);
+      setUserInfo({...userInfo , email: event.target.value})
+      setErrors({...errors , emailError: ''})
     }
     else{
-      setError('invalid email');
+      setErrors({...errors , emailError:'invalid email'})
+      setUserInfo({...userInfo , email:''})
     }
     
   }
@@ -31,10 +46,14 @@ const Login = () => {
     const validPassword = passwordRegex.test(event.target.value)
     console.log(validPassword);
     if(validPassword){
-      setPassword(event.target.value);
+      setUserInfo({...userInfo , password: event.target.value});
+      setErrors({...errors , passwordEroor:''});
+
     }
     else{
-      setError('minimum 8 charecther with uupercase ,lowercase and number')
+      setErrors({...errors , passwordEroor:'invalid password'})
+      setUserInfo({...userInfo , password:''})
+
     }
    
     
@@ -45,6 +64,12 @@ const Login = () => {
     event.preventDefault();
     
   }
+
+  useEffect(()=>{
+    if(hookError){
+     toast(hookError?.message)
+    }
+  },[hookError])
   
     return (
         <div className='mt-5'>
@@ -59,6 +84,7 @@ const Login = () => {
   <Form.Group className="mb-3" controlId="formBasicEmail">
     
     <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange}/>
+    {errors?.emailError && <p>{errors.emailError}</p>}
     <Form.Text className="text-muted">
       
     </Form.Text>
@@ -67,13 +93,16 @@ const Login = () => {
   <Form.Group className="mb-3" controlId="formBasicPassword">
     
     <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
+    {errors?.passwordEroor && <p>{errors.passwordEroor}</p>}
+
   </Form.Group>
   
-  <Button onClick={() => signInWithEmailAndPassword(email, password)} variant="primary" type="submit" >
+  <Button onClick={() => signInWithEmailAndPassword(userInfo.email, userInfo.password)} variant="primary" type="submit" >
     Login
   </Button>
-  { error && <p>{error}</p> }
-  {hookError && <p>{hookError?.message}</p>}
+  {/* { error && <p>{error}</p> } */}
+  {/* {hookError && <p>{hookError?.message}</p>} */}
+  <ToastContainer></ToastContainer>
  
 </Form>
 </div>
