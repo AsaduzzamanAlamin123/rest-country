@@ -66,7 +66,7 @@ const Register = () => {
   const handleConfirmPasswordChange = (event) =>{
 
     
-    if(event.target.value === userInfo.confirmPassword){
+    if(event.target.value === userInfo.password){
       setUserInfo({...userInfo , confirmPassword: event.target.value});
       setErrors({...errors , confirmPasswordError:''});
 
